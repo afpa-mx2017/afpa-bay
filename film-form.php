@@ -1,5 +1,5 @@
 
-        <form id="film-form" action="index.php?page=film-creation" method="post">
+        <form id="film-form" action="index.php?page=film-form-handler" method="post">
             <fieldset>
                 <legend>Nouveau film</legend>
                 <label for="titre">titre :</label>

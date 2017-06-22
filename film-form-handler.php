@@ -24,15 +24,16 @@ try
              //tout va bien
              echo 'cool!, film ajouté à la liste <a href="index.php">retour à la liste</a>';
          }else{
-             echo '<p class="alert">ptit soucis ici!</p>';
+             echo '<p class="alert">ptit soucis ici, un champ semble foireux!</p>';
              print_r($bdd->errorInfo());
+             require('film-form.php');
          }
          //$pdo->lastInsertId();
 
     }else{ //ya un pb, tous les champs ne sont pas renseignés
         
         echo '<p class="alert">tous les champs sont obligatoires</p>';
-        require('form-film.php');
+        require('film-form.php');
     }
     
    

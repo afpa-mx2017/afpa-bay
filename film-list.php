@@ -34,7 +34,7 @@ try
     ?>
 
     <h2>Liste des films</h2>
-    <a href="index.php?page=form-film">ajouter un film</a>
+    <a href="index.php?page=film-form">ajouter un film</a>
     <form method="get" action="index.php">
         <input type="text" name="recherche" value="<?php echo $recherche ?>"/>
         <input type="submit" name="ok" value="rechercher"/>

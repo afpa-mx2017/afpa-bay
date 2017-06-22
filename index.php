@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -24,7 +19,7 @@ and open the template in the editor.
                 display:inline-block;
                 text-align: center;
                 margin:0;
-                width: 80%;
+                width: 70%;
             }
             
             
@@ -79,10 +74,20 @@ and open the template in the editor.
             
         </style>
     </head>
+    <?php
+    session_start();
+    ?>
     <body>
         <header>
             <a href="index.php"><img src="images/afpa_logotb.png" alt="logo"/></a>
             <h1>afpa-bay</h1>
+            <?php
+            if (!isset($_SESSION['user_id'])){
+                echo '<a href="index.php?page=login">login</a>';
+            }else{
+                echo 'bonjour '. $_SESSION['current_user']. ' <a href="index.php?page=logout">logout</a>';
+            }
+            ?>
         </header>
         <main>
         <?php

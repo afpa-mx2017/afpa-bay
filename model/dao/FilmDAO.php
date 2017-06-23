@@ -27,6 +27,7 @@ class FilmDAO {
      * @return type tableau de film
      */
     public static function findByTitle($search_string){
+        $bdd = connectDB();
         $stmt = $bdd->prepare('SELECT * from film WHERE titre like :recherche');
         $stmt->bindValue(':recherche', '%'.$search_string.'%', PDO::PARAM_STR);
         $stmt->execute();
@@ -35,6 +36,7 @@ class FilmDAO {
    
     
     public static function findByBookMarked($userId){
+        $bdd = connectDB();
         $vus = [];
         $stmt = $bdd->prepare('SELECT film_id fROM utilisateur_film WHERE vu = 1 AND utilisateur_id = :user_id');
         $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
@@ -53,6 +55,7 @@ class FilmDAO {
      * @return type boolean true si operation réussie
      */
     public static function save($film){
+        $bdd = connectDB();
         $stmt = $bdd->prepare('
              INSERT INTO film ( titre, auteur, acteurs, date_sortie)
                  VALUES (:titre, :auteur, :acteurs, :date_sortie)');
@@ -69,6 +72,45 @@ class FilmDAO {
             return false;
         }
     }
-}
+    
+    
+    public static function toggleBookmark($idFilm, $userId, $bookmark){
+        $bdd = connectDB();
+    
+        //enregistrement existant ?
+        $stmt = $bdd->prepare('SELECT * FROM utilisateur_film WHERE film_id = :film_id AND utilisateur_id = :user_id');
+        $stmt->bindValue(':film_id', $filmId, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $res = $stmt->fetch();
+
+        if ($res){ //update
+
+            $stmt = $bdd->prepare('
+                 UPDATE utilisateur_film SET vu = :bookmark WHERE film_id = :film_id AND utilisateur_id = :user_id');
+            $stmt->bindValue(':film_id', $idFilm, PDO::PARAM_INT);
+            $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->bindValue(':bookmark', $bookmark, PDO::PARAM_BOOL);
+
+
+        //faire test si existe ou pas
+
+            $res = $stmt->execute();
+
+
+        }else{
+                //insert
+            $stmt = $bdd->prepare('
+                 INSERT INTO utilisateur_film (film_id, utilisateur_id, vu) VALUES (:film_id, :user_id, :bookmark)');
+            $stmt->bindValue(':film_id', $idFilm, PDO::PARAM_INT);
+            $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->bindValue(':bookmark', $bookmark, PDO::PARAM_BOOL);
+
+            $res = $stmt->execute();
+        }
+        
+        return $res;
+    }
+ }
     
 

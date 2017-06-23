@@ -1,44 +1,21 @@
 <?php
 
+include('model/dao/FilmDAO.php');
 
-$bdd = null;
+$recherche = filter_input(INPUT_GET, 'recherche', FILTER_SANITIZE_STRING);
+if ($recherche){
 
-try
-{
+   $films =  FilmDAO::findByTitle($recherche);
 
-    $bdd = new PDO('mysql:host=localhost;dbname=afpa-bay;charset=utf8', 'root', 'admin');
-
-}catch (Exception $e)
-
-{
-
-        die('Erreur : ' . $e->getMessage());
+}else{
+   $films = FilmDAO::findAll();
 
 }
-
-    $recherche = filter_input(INPUT_GET, 'recherche', FILTER_SANITIZE_STRING);
-    if ($recherche){
-        
-        $stmt = $bdd->prepare('SELECT * from film WHERE titre like :recherche');
-        $stmt->bindValue(':recherche', '%'.$recherche.'%', PDO::PARAM_STR);
-        $stmt->execute();
-
-    }else{
-        $stmt = $bdd->query('SELECT * from film');
-       
-    }
     
-     $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     
+
      //on va chercher la liste des films 'bookmarqué'
-     $vus = [];
      if (isset($_SESSION['user_id'])){
-        $stmt = $bdd->prepare('SELECT film_id fROM utilisateur_film WHERE vu = 1 AND utilisateur_id = :user_id');
-        $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
-        $stmt->execute();
-        while ($row = $stmt->fetch()){
-            $vus[] = $row['film_id'];
-        }
+        $vus = findByBookMarked($_SESSION['user_id']);
         
      }
      

@@ -20,7 +20,7 @@ if ($login && $mdp){
              echo '<p class="alert">humm, le mot de passe est pas bon</p>';
              require('login.php');
         }else{
-            //ça semble ok, on mlet des choses dans la variable de session
+            //ça semble ok, on mlet des choses dans la variable de session et on redirige vers la page d'accueil
             $_SESSION['user_id'] = $utilisateur['id'];
             $_SESSION['current_user'] = $utilisateur['login'];
             //on redirige

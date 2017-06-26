@@ -15,6 +15,8 @@
             <?php
             if (!isset($_SESSION['user_id'])){
                 echo '<a href="index.php?page=login">login</a>';
+                echo '--';
+                echo '<a href="index.php?page=register-form">register</a>';
             }else{
                 echo 'bonjour '. $_SESSION['current_user']. ' <a href="index.php?page=logout">logout</a>';
             }

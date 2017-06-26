@@ -2,81 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
-        <style>
-            
-            html{
-                margin:0;
-                padding:0;
-            }
-            
-            a{
-                text-decoration: none;
-            }
-
-
-            header{
-                box-shadow:15px 10px 12px #eeeeee;
-            }
-            
-            header h1{
-                display:inline-block;
-                text-align: center;
-                margin:0;
-                width: 70%;
-            }
-            
-            
-            header img{
-                display:inline-block;
-                left:1em;
-                max-width:120px;
-                vertical-align: middle;
-            }
-            
-            main{
-                margin:1em;
-            }
-
-            
-            .alert{
-                color:red;
-            }
-            
-            input[type="text"]{
-                display:block;
-            }
-            
-            .film-list{
-                list-style-type: none;
-                padding:1em;
-                
-            }
-            .film-list li{
-                border:1px solid grey;
-                margin:0.5em;
-                padding:1em;
-                display:inline-block;
-                width:20%;
-            }
-            
-            .film-list li img{
-                max-height: 400px;
-                width: 100%;
-                height: auto;
-            }
-            
-            @media screen and (max-width: 640px) {
-             .film-list li{
-                 width:100%;
-                 margin:0;
-                 padding:0 0.5em;
-             }
-                
-            }
-            
-            
-        </style>
+        <title>afpa-bay</title>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <?php
     session_start();

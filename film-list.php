@@ -13,12 +13,12 @@ if ($recherche){
 }
     
 
-     //on va chercher la liste des films 'bookmarqué'
-     $vus = [];
-     if (isset($_SESSION['user_id'])){
-        $vus = FilmDAO::findByBookMarked($_SESSION['user_id']);
-        
-     }
+//on va chercher la liste des films 'bookmarqué'
+$vus = [];
+if (isset($_SESSION['user_id'])){
+   $vus = FilmDAO::findByBookMarked($_SESSION['user_id']);
+
+}
      
     
 

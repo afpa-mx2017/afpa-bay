@@ -30,12 +30,18 @@ if (!empty($errorMsg)){
 }
 
 $user = array("login" => $login, "mdp" => password_hash($mdp, PASSWORD_BCRYPT), "email"=> $email);
-$res = UserDAO::save($user);
-if ($res) {
+try {
+    $res = UserDAO::save($user);
+    if ($res) {
      echo '<p class="info">cool votre compte à été créé, merci de vous authentifier</p>';
      require('login.php');
-}else{
-    echo '<p class="alert">oulala ya un soucis coté bdd</p>';
+    }else{
+        echo '<p class="alert">oulala ya un soucis coté bdd</p>';
+        require('register-form.php');
+        exit; //on va pas plus loin
+    }
+} catch (AlreadyExistException $exc) {
+     echo '<p class="alert">mais ché déjà pris ce login boudiou!</p>';
     require('register-form.php');
-    exit; //on va pas plus loin
 }
+

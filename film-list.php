@@ -23,15 +23,66 @@ if (isset($_SESSION['user_id'])){
     
 
     ?>
+    <style>
+        
+        .film-list{
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+        .film-list li{
+            border:1px solid grey;
+            margin:0.5em;
+            padding:1em;
+            display:inline-block;
+            width:20%;
+        }
 
-    <h2>Liste des films</h2>
-    <a href="index.php?page=film-form">ajouter un film</a>
-    <form method="get" action="index.php">
-        <input type="text" name="recherche" value="<?php echo $recherche ?>"/>
-        <input type="submit" name="ok" value="rechercher"/>
-    </form>
+        .film-list li img{
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+        }
 
+        @media screen and (max-width: 640px) {
+         .film-list li{
+             width:100%;
+             margin:0;
+             padding:0 0.5em;
+         }
+        }
+
+        .film-list-actions {
+            border:1px dashed grey;
+        }
+        .film-list-actions > * {
+            display:inline-block;
+        }
+        
+        .film-list-actions a {
+            text-align: right;
+        }
+        
+    </style>
+    
+    <header>
+        <h2>Liste des films</h2>
+       
+        <div class="film-list-actions">
+             <form class="search" method="get" action="index.php">
+                <input type="text" name="recherche" value="<?php echo $recherche ?>"/>
+                <input type="submit" name="ok" value="rechercher"/>
+            </form>
+            <div>
+                <a class="right" href="index.php?page=film-form">ajouter un film</a>
+            </div>
+        </div>
+        
+      
+    </header>
+    <div>
     <?php
+
     echo '<em>'.count($films).' film(s) trouvé(s)</em>';
     
     echo '<ul class="film-list">';
@@ -53,7 +104,7 @@ if (isset($_SESSION['user_id'])){
     echo '</ul>';
     
     ?>
-
+    </div>
     <style>
 
         

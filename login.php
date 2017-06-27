@@ -1,5 +1,5 @@
-
-<form id="film-form" action="index.php?page=login-handler" method="post">
+<h3>Connexion membre:</h3>
+<form action="index.php?page=login-handler" method="post">
 
     <label for="titre">login :</label>
     <input type="text" name="login" placeholder="login" required/>

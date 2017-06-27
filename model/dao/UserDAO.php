@@ -14,7 +14,12 @@ include('./exception/AlreadyExistException.php');
  */
 class UserDAO {
    
-    
+    /**
+     * sauvegarde un utilisateur en bdd
+     * @param type $user tableau associatif
+     * @return boolean true si insertion ok
+     * @throws AlreadyExistException si l'utilisateur existe déjà
+     */
     public static function save($user){
         $bdd = connectDB();
         

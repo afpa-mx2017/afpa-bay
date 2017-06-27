@@ -39,16 +39,16 @@ if (isset($_SESSION['user_id'])){
         }
 
         .film-list li img{
-            max-height: 400px;
+            max-height: 300px;
             width: 100%;
             height: auto;
         }
 
         @media screen and (max-width: 640px) {
          .film-list li{
-             width:100%;
+             width:95%;
              margin:0;
-             padding:0 0.5em;
+             padding:0.5em 0.5em;
          }
         }
 

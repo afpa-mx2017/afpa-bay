@@ -18,7 +18,7 @@
                 echo '--';
                 echo '<a href="index.php?page=register-form">register</a>';
             }else{
-                echo 'bonjour '. $_SESSION['current_user']. ' <a href="index.php?page=logout">logout</a>';
+                echo '<span>bonjour '. $_SESSION['current_user']. '</span> <a href="index.php?page=logout">logout</a>';
             }
             ?>
         </header>

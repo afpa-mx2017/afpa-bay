@@ -28,12 +28,23 @@ header img{
     vertical-align: middle;
 }
 
-main{
-    margin:1em;
-}
 
 
 .alert{
     color:red;
+}
+
+@media screen and (max-width: 640px) {
+    input {
+        width:95%;
+    }
+    header h1 {
+        width:100%;
+        display:block;
+        text-align: center;
+    }
+    header img{
+        max-width: 60px;
+    }
 }
 

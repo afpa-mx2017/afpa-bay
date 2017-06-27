@@ -49,4 +49,15 @@ class UserDAO {
             return false;
         }
     }
+    
+    
+    public static function findByUser($login){
+        $bdd = connectDB();
+        $stmt = $bdd->prepare('SELECT * FROM utilisateur WHERE login = :login');
+        $stmt->bindValue(':login', $login);
+        $stmt->execute();
+        $utilisateur = $stmt->fetch();
+        
+        return $utilisateur;
+    }
 }

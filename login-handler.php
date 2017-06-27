@@ -1,5 +1,7 @@
 <?php
 
+include('model/dao/UserDAO.php');
+
 $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
 $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
         
@@ -7,11 +9,7 @@ $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
         
 if ($login && $mdp){
 
-    $bdd = new PDO('mysql:host=localhost;dbname=afpa-bay;charset=utf8', 'root', 'admin');
-    $stmt = $bdd->prepare('SELECT * FROM utilisateur WHERE login = :login');
-    $stmt->bindValue(':login', $login);
-    $stmt->execute();
-    $utilisateur = $stmt->fetch();
+    $utilisateur = UserDAO::findByUser($login);
     if (!$utilisateur){
         echo '<p class="alert">humm, pas trouvé d\'utilisateur </p>'.$login;
         require('login.php');

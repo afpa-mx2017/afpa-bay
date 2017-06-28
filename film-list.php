@@ -91,6 +91,7 @@ if (isset($_SESSION['user_id'])){
             $film['thumbnail'] = "http://via.placeholder.com/300x400";
         }
         echo '<li film-id="'.$film['id'].'"><div><img src="'.$film['thumbnail'].'"/><h3>'.$film['titre'].'</h3><p class="auteur">réalisé par:'.$film['auteur'].'</p>';
+        echo '<p>Genre: '.$film['genre'].'</p>';
         if (in_array($film['id'], $vus)){
             echo '<a class="bookmark seen" href="javascript:void();"></a>';
         }else{

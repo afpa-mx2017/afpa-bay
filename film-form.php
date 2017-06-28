@@ -1,17 +1,38 @@
-
+<style>
+    #film-form label{
+        display: block;
+        width: 150px;
+        float: left;
+    }
+    
+</style>
         <form id="film-form" action="index.php?page=film-form-handler" method="post">
             <fieldset>
                 <legend>Nouveau film</legend>
+                <p>
                 <label for="titre">titre :</label>
                 <input type="text" name="titre" placeholder="titre du film" required/>
+                </p>
+                <p>
                 <label for="titre">auteur :</label>
                 <input type="text" name="auteur" placeholder="auteur" required/>
+                </p>
+                <p>
                 <label for="titre">acteurs :</label>
                 <input type="text" name="acteurs" placeholder="acteurs required"/>
+                </p>
+                <p>
                 <label for="titre">année de sortie :</label>
                 <input  name="date_sortie" placeholder="date de sortie" required/>
+                </p>
+                <p>
+                <label for="genre">genre :</label>
+                <?php include('view/genre-list.php'); ?>
+                </p>
+                <p>
                 <input  type="submit" name="ok" value="ok"/>
                 <input  type="reset" name="reset" value="effacer"/>
+                </p>
             </fieldset>
         </form>
         

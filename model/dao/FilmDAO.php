@@ -15,9 +15,11 @@ class FilmDAO {
      * @return type tableau de film
      */
     public static function findAll(){
-        $bdd = connectDB();
-        $stmt = $bdd->query('SELECT * from film');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $bdd = connectDB(); 
+        $stmt = $bdd->query('SELECT film.id, film.titre, film.auteur, film.acteurs, film.date_sortie,film.thumbnail, genre.nom as genre  from film  INNER JOIN genre  ON film.genre_id = genre.id');
+        $res =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($res);
+        return $res;
         
     }
     
@@ -57,12 +59,13 @@ class FilmDAO {
     public static function save($film){
         $bdd = connectDB();
         $stmt = $bdd->prepare('
-             INSERT INTO film ( titre, auteur, acteurs, date_sortie)
-                 VALUES (:titre, :auteur, :acteurs, :date_sortie)');
+             INSERT INTO film ( titre, auteur, acteurs, date_sortie, genre_id)
+                 VALUES (:titre, :auteur, :acteurs, :date_sortie, :genre)');
          $stmt->bindValue(':titre', $film['titre'], PDO::PARAM_STR);
          $stmt->bindValue(':auteur', $film['auteur'], PDO::PARAM_STR);
          $stmt->bindValue(':acteurs', $film['acteurs'], PDO::PARAM_STR);
          $stmt->bindValue(':date_sortie', $film['date_sortie'], PDO::PARAM_STR);
+         $stmt->bindValue(':genre', $film['genre'], PDO::PARAM_INT);
          
          $res =  $stmt->execute();
          if ($res){

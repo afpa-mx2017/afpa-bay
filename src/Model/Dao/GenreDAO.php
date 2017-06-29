@@ -1,5 +1,11 @@
 <?php
-include('DBConnect.php');
+
+
+namespace AfpaBay\Model\Dao;
+use \PDO;
+
+
+include_once('DBConnect.php');
 /**
  * Description of Genre
  *

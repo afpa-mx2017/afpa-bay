@@ -1,5 +1,5 @@
 <?php
-
+namespace AfpaBay\Exceptions;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +11,6 @@
  *
  * @author lionel
  */
-class AlreadyExistException extends Exception{
+class AlreadyExistException extends \Exception{
     //put your code here
 }

@@ -1,0 +1,18 @@
+{
+    "name": "lduboeuf/afpa-bay",
+    "description": "application de liste de film avec système de bookmarking",
+    "type": "project",
+    "require": {
+        "mustache/mustache": "^2.11",
+        "phroute/phroute": "^2.1"
+    },
+    "authors": [
+        {
+            "name": "lionel",
+            "email": "lduboeuf@ouvaton.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"AfpaBay\\": "src/"}
+    }
+}

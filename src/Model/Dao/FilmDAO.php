@@ -1,6 +1,9 @@
 <?php
+namespace AfpaBay\Model\Dao;
 
-include('DBConnect.php');
+use \PDO;
+
+include_once('DBConnect.php');
 
 /**
  * Description of filmdao
@@ -82,7 +85,7 @@ class FilmDAO {
     
         //enregistrement existant ?
         $stmt = $bdd->prepare('SELECT * FROM utilisateur_film WHERE film_id = :film_id AND utilisateur_id = :user_id');
-        $stmt->bindValue(':film_id', $filmId, PDO::PARAM_INT);
+        $stmt->bindValue(':film_id', $idFilm, PDO::PARAM_INT);
         $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $res = $stmt->fetch();

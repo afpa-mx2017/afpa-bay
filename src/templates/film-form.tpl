@@ -6,7 +6,8 @@
     }
     
 </style>
-        <form id="film-form" action="index.php?page=film-form-handler" method="post">
+        <p class="success">{{{success}}}</p>
+        <form id="film-form" action="/film" method="post">
             <fieldset>
                 <legend>Nouveau film</legend>
                 <p>
@@ -27,7 +28,12 @@
                 </p>
                 <p>
                 <label for="genre">genre :</label>
-                <?php include('view/genre-list.php'); ?>
+                <select name="genre">
+                {{# genres }}
+                  <option value="{{ id }}">{{ nom }}</strong>
+                {{/ genres }}
+                </select>
+
                 </p>
                 <p>
                 <input  type="submit" name="ok" value="ok"/>
@@ -35,8 +41,9 @@
                 </p>
             </fieldset>
         </form>
+        <p class="alert">{{error}}</p>
         
-        <script>
+        <script>php FILTER_VALIDATE_BOOLEAN
             //exemple de control sur un formulaire en js
             $btnSubmit = document.forms["film-form"]['ok'];
             $btnSubmit.onclick = function(e){

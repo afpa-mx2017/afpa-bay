@@ -1,6 +1,11 @@
 <?php
-include('DBConnect.php');
-include('./exception/AlreadyExistException.php');
+namespace AfpaBay\Model\Dao;
+
+use \PDO;
+use AfpaBay\Exceptions\AlreadyExistException;
+
+include_once('DBConnect.php');
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

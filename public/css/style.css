@@ -28,6 +28,11 @@ header img{
     vertical-align: middle;
 }
 
+form label{
+    display: block;
+    width: 150px;
+    float: left;
+}
 
 
 .alert{

@@ -113,6 +113,8 @@ class FilmDAO {
             $stmt->bindValue(':bookmark', $bookmark, PDO::PARAM_BOOL);
 
             $res = $stmt->execute();
+
+
         }
         
         return $res;

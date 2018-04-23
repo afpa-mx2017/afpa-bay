@@ -89,10 +89,12 @@ class FilmController extends Controller {
         
         $seen = filter_input(INPUT_POST, 'seen', FILTER_VALIDATE_BOOLEAN);
 
-        if ($seen==NULL){
+
+
+        if (is_null($seen)){
             http_response_code(400);
         }
-        
+
            
         $res = FilmDAO::toggleBookmark($id, $this->getCurrentUser(), $seen);
         if ($res){
